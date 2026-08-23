@@ -29,6 +29,11 @@ jobs:
             svg { color: #cdd6f4 !important; }
             h1, h2, h3 { color: #cba6f7 !important; }
             .field svg { fill: #a6adc8 !important; }
+            /* languages bar track + remainder segment are hardcoded light colors */
+            rect[fill="white"] { fill: #313244 !important; }
+            rect[fill="#d1d5da"] { fill: #45475a !important; }
+            /* header mini contribution calendar's empty-day cells */
+            rect.day[fill="#ebedf0"] { fill: #313244 !important; }
             :root {
               --color-calendar-graph-day-bg: #313244 !important;
               --color-calendar-graph-day-border: rgba(205,214,244,0.08) !important;
