@@ -134,19 +134,100 @@ function layout(p) {
   };
 }
 
+// A standalone section title — transparent background, sits directly on the page,
+// same font/weight as the card titles above.
+function titleLayout(text, p) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        display: "flex",
+        padding: "4px 2px",
+        fontSize: 26,
+        fontWeight: 700,
+        color: p.accent,
+        fontFamily: "Consolas",
+      },
+      children: text,
+    },
+  };
+}
+
+// A single wide card whose body is multiple paragraphs (for the Stack section).
+function textCardLayout(title, paragraphs, p) {
+  return {
+    type: "div",
+    props: {
+      style: {
+        display: "flex",
+        flexDirection: "column",
+        width: WIDTH - 32,
+        padding: "20px 24px",
+        borderRadius: 14,
+        backgroundColor: p.surface,
+        border: `1px solid ${p.border}`,
+        gap: 10,
+        fontFamily: "Consolas",
+      },
+      children: [
+        {
+          type: "div",
+          props: {
+            style: { fontSize: 20, fontWeight: 700, color: p.accent },
+            children: title,
+          },
+        },
+        ...paragraphs.map((body) => ({
+          type: "div",
+          props: {
+            style: { fontSize: 16, color: p.text, lineHeight: 1.5 },
+            children: body,
+          },
+        })),
+      ],
+    },
+  };
+}
+
+const stackParagraphs = [
+  `Years in IT took me from writing scripts to designing distributed systems. My hands still remember VisualBasic 6 and ActionScript, and every kind of pain that hides behind the words "legacy code."`,
+  `Core stack: PHP · JavaScript/TypeScript · Python — with the ecosystem knowledge to back it, not just the buzzwords. If the question is "which side of the frontend are you on," the answer is React. An informed answer, promise.`,
+  `Also comfortable in Java, C/C++, PL/SQL, SQL, PowerShell/Bash, CI/CD, Docker, message queues, clustering, load balancing, and enough CAP/PACELC theorem to argue about it at parties nobody invited me to.`,
+];
+
 mkdirSync("assets", { recursive: true });
 
-for (const p of Object.values(palettes)) {
-  const svg = await satori(layout(p), {
-    width: WIDTH,
-    fonts: [
-      { name: "Consolas", data: regular, weight: 400, style: "normal" },
-      { name: "Consolas", data: bold, weight: 700, style: "normal" },
-    ],
-  });
-  const png = new Resvg(svg, { fitTo: { mode: "width", value: WIDTH * 2 } })
+const fonts = [
+  { name: "Consolas", data: regular, weight: 400, style: "normal" },
+  { name: "Consolas", data: bold, weight: 700, style: "normal" },
+];
+
+async function renderPng(node, width) {
+  const svg = await satori(node, { width, fonts });
+  return new Resvg(svg, { fitTo: { mode: "width", value: width * 2 } })
     .render()
     .asPng();
-  writeFileSync(`assets/cards-${p.name}.png`, png);
+}
+
+for (const p of Object.values(palettes)) {
+  writeFileSync(`assets/cards-${p.name}.png`, await renderPng(layout(p), WIDTH));
   console.log(`wrote assets/cards-${p.name}.png`);
+
+  writeFileSync(
+    `assets/title-about-${p.name}.png`,
+    await renderPng(titleLayout("A little about me, self-aware:", p), 700),
+  );
+  console.log(`wrote assets/title-about-${p.name}.png`);
+
+  writeFileSync(
+    `assets/title-links-${p.name}.png`,
+    await renderPng(titleLayout("Links", p), 200),
+  );
+  console.log(`wrote assets/title-links-${p.name}.png`);
+
+  writeFileSync(
+    `assets/card-stack-${p.name}.png`,
+    await renderPng(textCardLayout("Stack", stackParagraphs, p), WIDTH),
+  );
+  console.log(`wrote assets/card-stack-${p.name}.png`);
 }

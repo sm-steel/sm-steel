@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://static.zerochan.net/Frieren.full.4063049.png" width="100%" alt="Frieren banner" />
+<img src="assets/banner.jpg" width="100%" alt="Frieren banner" />
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+SYSTEM+BOOTING...;%E9%9B%BB%E8%84%B3%E7%95%B0%E5%B8%B8+EMOTIONAL+FIRMWARE+OUTDATED" alt="typing status line" />
 
@@ -10,7 +10,11 @@
 
 > Apparently (see: [impostor syndrome](https://en.wikipedia.org/wiki/Impostor_syndrome)) a senior full-stack developer with bipolar disorder.
 
-A little about me, self-aware:
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/title-about-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/title-about-light.png" />
+  <img alt="A little about me, self-aware:" src="assets/title-about-dark.png" />
+</picture>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/cards-dark.png" />
@@ -18,13 +22,11 @@ A little about me, self-aware:
   <img alt="bio cards" src="assets/cards-dark.png" width="100%" />
 </picture>
 
-### Stack
-
-Years in IT took me from writing scripts to designing distributed systems. My hands still remember VisualBasic 6 and ActionScript, and every kind of pain that hides behind the words "legacy code."
-
-Core stack: **PHP · JavaScript/TypeScript · Python** — with the ecosystem knowledge to back it, not just the buzzwords. If the question is "which side of the frontend are you on," the answer is React. An informed answer, promise.
-
-Also comfortable in Java, C/C++, PL/SQL, SQL, PowerShell/Bash, CI/CD, Docker, message queues, clustering, load balancing, and enough CAP/PACELC theorem to argue about it at parties nobody invited me to.
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/card-stack-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/card-stack-light.png" />
+  <img alt="Stack" src="assets/card-stack-dark.png" width="100%" />
+</picture>
 
 <img src="https://capsule-render.vercel.app/api?type=soft&color=0:1e1e2e,100:313244&height=60&section=header" width="100%" />
 
@@ -62,7 +64,11 @@ Also comfortable in Java, C/C++, PL/SQL, SQL, PowerShell/Bash, CI/CD, Docker, me
 </div>
 -->
 
-### Links
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/title-links-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/title-links-light.png" />
+  <img alt="Links" src="assets/title-links-dark.png" />
+</picture>
 
 <div align="center">
 
@@ -76,7 +82,7 @@ Also comfortable in Java, C/C++, PL/SQL, SQL, PowerShell/Bash, CI/CD, Docker, me
 
 <div align="center">
 
-<img src="https://static.zerochan.net/Frieren.full.4108994.jpg" width="100%" alt="Frieren footer" />
+<img src="assets/footer.jpg" width="100%" alt="Frieren footer" />
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+PROCESS+COMPLETED;%E9%9B%BB%E8%84%B3%E5%A0%B1%E5%91%8A+OUTPUT+SAVED+TO+%2Fvar%2Flog%2Fmind" alt="typing status line" />
 
