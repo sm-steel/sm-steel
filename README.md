@@ -10,11 +10,9 @@
 
 > Apparently (see: [impostor syndrome](https://en.wikipedia.org/wiki/Impostor_syndrome)) a senior full-stack developer with bipolar disorder.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/title-about-dark.png" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/title-about-light.png" />
-  <img alt="A little about me, self-aware:" src="assets/title-about-dark.png" />
-</picture>
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=A+little+about+me%2C+self-aware%3A" alt="A little about me, self-aware:" />
+</div>
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="assets/cards-dark.png" />
@@ -22,10 +20,14 @@
   <img alt="bio cards" src="assets/cards-dark.png" width="100%" />
 </picture>
 
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=200&lines=Stack" alt="Stack" />
+</div>
+
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/card-stack-dark.png" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/card-stack-light.png" />
-  <img alt="Stack" src="assets/card-stack-dark.png" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.png" />
+  <img alt="Stack" src="assets/stack-dark.png" width="100%" />
 </picture>
 
 <img src="https://capsule-render.vercel.app/api?type=soft&color=0:1e1e2e,100:313244&height=60&section=header" width="100%" />
@@ -64,11 +66,9 @@
 </div>
 -->
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/title-links-dark.png" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/title-links-light.png" />
-  <img alt="Links" src="assets/title-links-dark.png" />
-</picture>
+<div align="center">
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=200&lines=Links" alt="Links" />
+</div>
 
 <div align="center">
 
