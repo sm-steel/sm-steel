@@ -26,11 +26,14 @@ jobs:
           filename: metrics.svg
           committer_branch: output-metrics
           extras_css: |
+            svg { color: #cdd6f4 !important; }
+            h1, h2, h3 { color: #cba6f7 !important; }
+            .field svg { fill: #a6adc8 !important; }
             :root {
-              --color-canvas-default: #1e1e2e !important;
-              --color-canvas-subtle: #313244 !important;
-              --color-fg-default: #cdd6f4 !important;
-              --color-fg-muted: #a6adc8 !important;
-              --color-border-default: #45475a !important;
-              --color-accent-fg: #cba6f7 !important;
+              --color-calendar-graph-day-bg: #313244 !important;
+              --color-calendar-graph-day-border: rgba(205,214,244,0.08) !important;
+              --color-calendar-graph-day-L1-bg: #89b4fa !important;
+              --color-calendar-graph-day-L2-bg: #b4befe !important;
+              --color-calendar-graph-day-L3-bg: #cba6f7 !important;
+              --color-calendar-graph-day-L4-bg: #f5c2e7 !important;
             }
