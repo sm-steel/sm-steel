@@ -1,6 +1,6 @@
 <div align="center">
 
-<img src="https://static.zerochan.net/Frieren.full.4336265.jpg" width="100%" alt="Frieren banner" />
+<img src="https://static.zerochan.net/Frieren.full.4063049.png" width="100%" alt="Frieren banner" />
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+SYSTEM+BOOTING...;%E9%9B%BB%E8%84%B3%E7%95%B0%E5%B8%B8+EMOTIONAL+FIRMWARE+OUTDATED" alt="typing status line" />
 
@@ -12,49 +12,11 @@
 
 A little about me, self-aware:
 
-<table>
-<tr>
-<td width="50%">
-
-**Code & Sound**
-
-I write code by day and disappear into FL Studio by night, making tracks for the imaginary soundtrack of my own life.
-
-</td>
-<td width="50%">
-
-**Anime as Therapy**
-
-I watch anime through the lens of cognitive behavioral therapy. Current favorites: *Frieren: Beyond Journey's End* and *Fullmetal Alchemist: Brotherhood*.
-
-</td>
-</tr>
-<tr>
-<td width="50%">
-
-**Cooking**
-
-Watch a bunch of guides, then combine them. Borscht simmers for 8 hours during a manic phase, then it's instant noodles for months. Still computing the perfect al dente in O(1).
-
-</td>
-<td width="50%">
-
-**League of Legends**
-
-My longest toxic relationship. ADC/jungle. Manically leveling accounts for 13 years running.
-
-</td>
-</tr>
-<tr>
-<td colspan="2">
-
-**Path of Exile**
-
-Playing for 10+ years and still not sure why. I optimize builds in PoB instead of optimizing my life.
-
-</td>
-</tr>
-</table>
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/cards-dark.png" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/cards-light.png" />
+  <img alt="bio cards" src="assets/cards-dark.png" width="100%" />
+</picture>
 
 ### Stack
 
@@ -68,8 +30,7 @@ Also comfortable in Java, C/C++, PL/SQL, SQL, PowerShell/Bash, CI/CD, Docker, me
 
 <div align="center">
 
-<img src="https://github-readme-stats.vercel.app/api?username=sm-steel&show_icons=true&theme=catppuccin_mocha&hide_border=true&count_private=true" height="165" alt="GitHub stats" />
-<img src="https://github-readme-stats.vercel.app/api/top-langs/?username=sm-steel&layout=compact&theme=catppuccin_mocha&hide_border=true" height="165" alt="Top languages" />
+<img src="https://raw.githubusercontent.com/sm-steel/sm-steel/output-metrics/metrics.svg" width="100%" alt="GitHub stats" />
 
 <br />
 
@@ -117,6 +78,6 @@ Also comfortable in Java, C/C++, PL/SQL, SQL, PowerShell/Bash, CI/CD, Docker, me
 
 <img src="https://static.zerochan.net/Frieren.full.4108994.jpg" width="100%" alt="Frieren footer" />
 
-<sub>[STATUS]: PROCESS COMPLETED &nbsp;·&nbsp; 電脳報告 OUTPUT SAVED TO /var/log/mind</sub>
+<img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+PROCESS+COMPLETED;%E9%9B%BB%E8%84%B3%E5%A0%B1%E5%91%8A+OUTPUT+SAVED+TO+%2Fvar%2Flog%2Fmind" alt="typing status line" />
 
 </div>

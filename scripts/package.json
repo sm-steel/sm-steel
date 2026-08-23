@@ -1,0 +1,9 @@
+{
+  "name": "render-cards",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "satori": "^0.12.2",
+    "@resvg/resvg-js": "^2.6.2"
+  }
+}
