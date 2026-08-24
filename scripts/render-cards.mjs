@@ -5,12 +5,18 @@
 //   node render-cards.mjs
 //
 import { readFileSync, writeFileSync, mkdirSync } from "node:fs";
+import { fileURLToPath } from "node:url";
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 
-const FONTS_DIR = "C:/Windows/Fonts";
-const regular = readFileSync(`${FONTS_DIR}/consola.ttf`);
-const bold = readFileSync(`${FONTS_DIR}/consolab.ttf`);
+// Resolved via the package's own export map, not an OS-specific path —
+// works the same on Windows/macOS/Linux since it's just node_modules.
+const fontPath = (weight) =>
+  fileURLToPath(
+    import.meta.resolve(`@fontsource/monaspace-neon/files/monaspace-neon-latin-${weight}-normal.woff`),
+  );
+const regular = readFileSync(fontPath(400));
+const bold = readFileSync(fontPath(700));
 
 const palettes = {
   dark: {
@@ -125,7 +131,7 @@ function grid(cardList, p) {
         padding: 16,
         gap: 16,
         backgroundColor: p.base,
-        fontFamily: "Consolas",
+        fontFamily: "Monaspace Neon",
       },
       children: rows.map((row) => ({
         type: "div",
@@ -141,8 +147,8 @@ function grid(cardList, p) {
 mkdirSync("assets", { recursive: true });
 
 const fonts = [
-  { name: "Consolas", data: regular, weight: 400, style: "normal" },
-  { name: "Consolas", data: bold, weight: 700, style: "normal" },
+  { name: "Monaspace Neon", data: regular, weight: 400, style: "normal" },
+  { name: "Monaspace Neon", data: bold, weight: 700, style: "normal" },
 ];
 
 async function renderPng(node, width) {
