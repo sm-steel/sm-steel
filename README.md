@@ -10,6 +10,12 @@
 
 > Apparently (see: [impostor syndrome](https://en.wikipedia.org/wiki/Impostor_syndrome)) a senior full-stack developer with bipolar disorder.
 
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://ym-nowplaying-widget.vercel.app/api/nowplaying?theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://ym-nowplaying-widget.vercel.app/api/nowplaying?theme=light" />
+  <img alt="Yandex Music now playing" src="https://ym-nowplaying-widget.vercel.app/api/nowplaying?theme=dark" width="100%" />
+</picture>
+
 <div align="center">
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=A+little+about+me%2C+self-aware%3A" alt="A little about me, self-aware:" />
 </div>
