@@ -32,6 +32,11 @@ jobs:
             /* languages bar track + remainder segment are hardcoded light colors */
             rect[fill="white"] { fill: #313244 !important; }
             rect[fill="#d1d5da"] { fill: #45475a !important; }
+            /* ...but #languages-bar is a luminance mask, not a visible shape - its
+               white rect must stay white or every masked bar segment gets dimmed/
+               recolored toward the override above, while the legend dots (outside
+               the mask) don't, causing the bar and legend colors to mismatch */
+            mask rect[fill="white"] { fill: white !important; }
             /* header mini contribution calendar's empty-day cells */
             rect.day[fill="#ebedf0"] { fill: #313244 !important; }
             :root {
