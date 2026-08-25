@@ -58,19 +58,13 @@
 
 <br />
 
-<!-- AniList card placeholder — needs the AniList username to fill in, see plan -->
-<!--
-<div align="center">
-<img src="https://anicards.example/api?username=YOUR_ANILIST_USERNAME&theme=catppuccin_mocha" alt="AniList stats" />
-</div>
--->
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://mal-stats-widget.vercel.app/api/mal?theme=dark" />
+  <source media="(prefers-color-scheme: light)" srcset="https://mal-stats-widget.vercel.app/api/mal?theme=light" />
+  <img alt="MyAnimeList stats" src="https://mal-stats-widget.vercel.app/api/mal?theme=dark" width="100%" />
+</picture>
 
-<!-- Yandex Music now-playing widget — custom build, not wired up yet, see plan -->
-<!--
-<div align="center">
-<img src="https://your-deployed-widget.vercel.app/api/nowplaying" alt="Yandex Music now playing" />
-</div>
--->
+<br />
 
 <div align="center">
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=200&lines=Links" alt="Links" />
