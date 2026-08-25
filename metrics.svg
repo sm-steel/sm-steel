@@ -9,6 +9,11 @@ h1, h2, h3 { color: #cba6f7 !important; }
 /* languages bar track + remainder segment are hardcoded light colors */
 rect[fill="white"] { fill: #313244 !important; }
 rect[fill="#d1d5da"] { fill: #45475a !important; }
+/* ...but #languages-bar is a luminance mask, not a visible shape - its
+ white rect must stay white or every masked bar segment gets dimmed/
+ recolored toward the override above, while the legend dots (outside
+ the mask) don't, causing the bar and legend colors to mismatch */
+mask rect[fill="white"] { fill: white !important; }
 /* header mini contribution calendar's empty-day cells */
 rect.day[fill="#ebedf0"] { fill: #313244 !important; }
 :root {
@@ -152,14 +157,14 @@ rect.day[fill="#ebedf0"] { fill: #313244 !important; }
                         <rect x="0" y="0" width="920" height="8" fill="white" rx="5"/>
                     </mask>
                     <rect mask="url(#languages-bar)" x="0" y="0" width="0" height="8" fill="#d1d5da"/>
-                    <rect mask="url(#languages-bar)" x="0" y="0" width="420.91595794281073" height="8" fill="#000080"/>
-                    <rect mask="url(#languages-bar)" x="420.91595794281073" y="0" width="178.14571064986143" height="8" fill="#3572A5"/>
-                    <rect mask="url(#languages-bar)" x="599.0616685926722" y="0" width="133.91294044873106" height="8" fill="#e34c26"/>
-                    <rect mask="url(#languages-bar)" x="732.9746090414033" y="0" width="127.05127277931055" height="8" fill="#3178c6"/>
-                    <rect mask="url(#languages-bar)" x="860.0258818207137" y="0" width="22.840137441392756" height="8" fill="#f1e05a"/>
-                    <rect mask="url(#languages-bar)" x="882.8660192621065" y="0" width="16.91067694348315" height="8" fill="#89e051"/>
-                    <rect mask="url(#languages-bar)" x="899.7766962055897" y="0" width="11.425731330697964" height="8" fill="#663399"/>
-                    <rect mask="url(#languages-bar)" x="911.2024275362876" y="0" width="8.797572463712365" height="8" fill="#012456"/>
+                    <rect mask="url(#languages-bar)" x="0" y="0" width="417.580146198451" height="8" fill="#000080"/>
+                    <rect mask="url(#languages-bar)" x="417.580146198451" y="0" width="184.02499891232748" height="8" fill="#3572A5"/>
+                    <rect mask="url(#languages-bar)" x="601.6051451107785" y="0" width="132.85166360464592" height="8" fill="#e34c26"/>
+                    <rect mask="url(#languages-bar)" x="734.4568087154245" y="0" width="126.04437551187397" height="8" fill="#3178c6"/>
+                    <rect mask="url(#languages-bar)" x="860.5011842272985" y="0" width="22.65912648829855" height="8" fill="#f1e05a"/>
+                    <rect mask="url(#languages-bar)" x="883.160310715597" y="0" width="16.776657708315998" height="8" fill="#89e051"/>
+                    <rect mask="url(#languages-bar)" x="899.936968423913" y="0" width="11.335180977256577" height="8" fill="#663399"/>
+                    <rect mask="url(#languages-bar)" x="911.2721494011696" y="0" width="8.727850598830504" height="8" fill="#012456"/>
                 </svg>
                 <div class="field center horizontal-wrap fill-width">
                     <div class="field center no-wrap language">
