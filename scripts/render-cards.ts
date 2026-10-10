@@ -1,23 +1,17 @@
 // Renders the profile's neon cards into assets/ as animated SVGs (Mocha for dark,
-// Latte for light): the bio and stack text cards, plus the banner and footer artwork.
+// Latte for light): the whoami, bio and stack text cards, plus the footer artwork.
 // Static content, so run it by hand and commit the output:
 //
 //   node scripts/render-cards.ts      (or: mise run cards)
 //
 import { writeFile } from "node:fs/promises";
 import { join } from "node:path";
-import {
-	card,
-	cardGrid,
-	esc,
-	FLAVORS,
-	FONT_STACK,
-	type Palette,
-} from "@sm-steel/neon-kit";
+import { card, cardGrid, FLAVORS, type Palette, r3 } from "@sm-steel/neon-kit";
 import sharp from "sharp";
 import { BADGES, badgeSvg, type Theme } from "./cards/badges.ts";
-import { bioCards, stackCards } from "./cards/content.ts";
+import { bioCards, stackCards, whoamiCards } from "./cards/content.ts";
 import { GRID, layoutCards, type TextCard } from "./cards/layout.ts";
+import { type Art, bodyText, placeArt } from "./cards/text.ts";
 
 const ASSETS = join(import.meta.dirname, "..", "assets");
 const THEMES: [Theme, Palette][] = [
@@ -25,18 +19,11 @@ const THEMES: [Theme, Palette][] = [
 	["light", FLAVORS.latte],
 ];
 
-/** Body text lines, drawn from the content box's top-left corner. */
-function bodyText(lines: string[], p: Palette): string {
-	return (
-		`<g font-family="${FONT_STACK}" font-size="${GRID.bodySize}" fill="${p.text}">` +
-		lines
-			.map(
-				(l, i) =>
-					`<text x="0" y="${GRID.bodySize + i * GRID.lineHeight}">${esc(l)}</text>`,
-			)
-			.join("") +
-		`</g>`
-	);
+/** A card's art, flush right and fitted to the frame height (see placeArt). */
+function artSvg(c: TextCard, width: number, height: number): string {
+	if (!c.art) return "";
+	const t = placeArt(width, height, c.art);
+	return `<g transform="translate(${r3(t.x)} ${r3(t.y)}) scale(${r3(t.scale)})">${c.art.svg}</g>`;
 }
 
 function textGrid(
@@ -59,9 +46,22 @@ function textGrid(
 				label: c.card.title,
 				title: c.card.title,
 			},
-			content: bodyText(c.lines, p),
+			content: bodyText(c.lines, p, c.card.link) + artSvg(c.card, c.width, c.height),
 		})),
 	);
+}
+
+/** A transparent image as card art (PNG keeps the alpha channel). */
+async function imageArt(file: string): Promise<Art> {
+	const png = await sharp(file).png({ compressionLevel: 9 }).toBuffer();
+	const meta = await sharp(png).metadata();
+	const width = meta.width ?? 0;
+	const height = meta.height ?? 0;
+	return {
+		width,
+		height,
+		svg: `<image width="${width}" height="${height}" href="data:image/png;base64,${png.toString("base64")}"/>`,
+	};
 }
 
 /** Artwork scaled to 2× the content width (sharp, JPEG q80) and framed as one card. */
@@ -79,14 +79,15 @@ async function artCard(name: string, file: string, p: Palette): Promise<string> 
 	);
 }
 
+const whoami: TextCard[] = whoamiCards.map((c) => ({ ...c }));
+const first = whoami[0];
+if (first) first.art = await imageArt(join(ASSETS, "whoami-frieren.gif"));
+
 for (const [theme, p] of THEMES) {
 	const out: [string, string][] = [
+		[`whoami-${theme}.svg`, textGrid("whoami", "whoami", whoami, p)],
 		[`bio-${theme}.svg`, textGrid("bio", "A little about me", bioCards, p)],
 		[`stack-${theme}.svg`, textGrid("stack", "Stack", stackCards, p)],
-		[
-			`banner-${theme}.svg`,
-			await artCard("banner", join(ASSETS, "banner.jpg"), p),
-		],
 		[
 			`footer-${theme}.svg`,
 			await artCard("footer", join(ASSETS, "footer.jpg"), p),

@@ -1,16 +1,10 @@
-<p>
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" />
-  <img align="top" alt="Frieren banner" src="assets/banner-dark.svg" width="100%" />
-</picture>
-</p>
-
 <p align="center">
 <img align="top" src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+SYSTEM+BOOTING...;%E9%9B%BB%E8%84%B3%E7%95%B0%E5%B8%B8+EMOTIONAL+FIRMWARE+OUTDATED" alt="typing status line" />
 </p>
 
-> Apparently (see: [impostor syndrome](https://en.wikipedia.org/wiki/Impostor_syndrome)) a senior full-stack developer with bipolar disorder.
+<p>
+<a href="https://en.wikipedia.org/wiki/Impostor_syndrome"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/whoami-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/whoami-light.svg" /><img align="top" alt="Apparently (see: impostor syndrome) a senior full-stack developer with bipolar disorder." src="assets/whoami-dark.svg" width="100%" /></picture></a>
+</p>
 
 <p>
 <picture>

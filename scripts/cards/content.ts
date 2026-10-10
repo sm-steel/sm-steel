@@ -1,6 +1,15 @@
 // Profile card text (moved verbatim from the old satori renderer).
 import type { TextCard } from "./layout.ts";
 
+export const whoamiCards: TextCard[] = [
+  {
+    title: "whoami",
+    body: "Apparently (see: impostor syndrome) a senior full-stack developer\nwith bipolar disorder.",
+    link: "impostor syndrome",
+    wide: true,
+  },
+];
+
 export const bioCards: TextCard[] = [
   {
     title: "Code & Sound",

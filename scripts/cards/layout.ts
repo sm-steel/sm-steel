@@ -1,11 +1,16 @@
 // Grid layout for the profile text cards: two cards per row (wide cards take a
 // whole row), equal heights within a row, body text wrapped to the card width.
 import { CARD, charsPerLine, wrapLines } from "@sm-steel/neon-kit";
+import type { Art } from "./text.ts";
 
 export interface TextCard {
 	title: string;
 	body: string;
 	wide?: boolean;
+	/** A phrase in `body` drawn as a link (the README wraps the card in <a>). */
+	link?: string;
+	/** Vector art drawn flush right, fitted to the frame height. */
+	art?: Art;
 }
 
 export const GRID = {
@@ -50,8 +55,13 @@ export function layoutCards(cards: TextCard[]): {
 	for (const row of rows) {
 		const outerWidth = row[0]?.wide ? GRID.width : half;
 		const width = outerWidth - 2 * CARD.pad;
+		// "\n" in a body forces a line break; each part wraps on its own
 		const wrapped = row.map((c) =>
-			wrapLines(c.body, charsPerLine(width, GRID.bodySize)),
+			c.body
+				.split("\n")
+				.flatMap((part) =>
+					wrapLines(part, charsPerLine(width, GRID.bodySize)),
+				),
 		);
 		const height = Math.max(...wrapped.map((l) => textHeight(l.length)));
 		const outerHeight = height + 2 * CARD.pad + CARD.titleRow;

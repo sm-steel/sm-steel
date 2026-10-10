@@ -44,4 +44,11 @@ describe("layoutCards", () => {
 		const g = layoutCards([short, long, short]);
 		expect(g.cells[2]).toMatchObject({ x: 0, outerWidth: (GRID.width - GRID.gap) / 2 });
 	});
+
+	it("breaks lines at \\n in the body", () => {
+		const g = layoutCards([
+			{ title: "N", body: "first part\nsecond part", wide: true },
+		]);
+		expect(g.cells[0]?.lines).toEqual(["first part", "second part"]);
+	});
 });
