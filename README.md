@@ -1,6 +1,10 @@
 <div align="center">
 
-<img src="assets/banner.jpg" width="100%" alt="Frieren banner" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/banner-light.svg" />
+  <img alt="Frieren banner" src="assets/banner-dark.svg" width="100%" />
+</picture>
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+SYSTEM+BOOTING...;%E9%9B%BB%E8%84%B3%E7%95%B0%E5%B8%B8+EMOTIONAL+FIRMWARE+OUTDATED" alt="typing status line" />
 
@@ -21,9 +25,9 @@
 </div>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/cards-dark.png" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/cards-light.png" />
-  <img alt="bio cards" src="assets/cards-dark.png" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/bio-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/bio-light.svg" />
+  <img alt="bio cards" src="assets/bio-dark.svg" width="100%" />
 </picture>
 
 <div align="center">
@@ -31,9 +35,9 @@
 </div>
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.png" />
-  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.png" />
-  <img alt="Stack" src="assets/stack-dark.png" width="100%" />
+  <source media="(prefers-color-scheme: dark)" srcset="assets/stack-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/stack-light.svg" />
+  <img alt="Stack" src="assets/stack-dark.svg" width="100%" />
 </picture>
 
 <img src="https://capsule-render.vercel.app/api?type=soft&color=0:1e1e2e,100:313244&height=60&section=header" width="100%" />
@@ -82,7 +86,11 @@
 
 <div align="center">
 
-<img src="assets/footer.jpg" width="100%" alt="Frieren footer" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/footer-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="assets/footer-light.svg" />
+  <img alt="Frieren footer" src="assets/footer-dark.svg" width="100%" />
+</picture>
 
 <img src="https://readme-typing-svg.demolab.com/?font=Fira+Code&size=20&pause=1500&color=CBA6F7&center=true&vCenter=true&width=600&lines=%5BSTATUS%5D%3A+PROCESS+COMPLETED;%E9%9B%BB%E8%84%B3%E5%A0%B1%E5%91%8A+OUTPUT+SAVED+TO+%2Fvar%2Flog%2Fmind" alt="typing status line" />
 
