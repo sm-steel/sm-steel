@@ -42,11 +42,11 @@
 
 <div align="center">
 
-<img src="https://raw.githubusercontent.com/sm-steel/sm-steel/output-metrics/metrics.svg" width="100%" alt="GitHub stats" />
-
-<br />
-
-<img src="https://streak-stats.demolab.com/?user=sm-steel&theme=catppuccin_mocha&hide_border=true" alt="GitHub streak" />
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/sm-steel/sm-steel/output/stats-dark.svg" />
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/sm-steel/sm-steel/output/stats.svg" />
+  <img alt="GitHub stats" src="https://raw.githubusercontent.com/sm-steel/sm-steel/output/stats.svg" width="100%" />
+</picture>
 
 <br /><br />
 

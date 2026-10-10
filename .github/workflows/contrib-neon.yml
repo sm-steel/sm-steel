@@ -1,4 +1,4 @@
-name: Generate contrib-neon animation
+name: Generate profile cards (contrib-neon, stats-neon)
 
 on:
   schedule:
@@ -22,6 +22,16 @@ jobs:
           outputs: |
             dist/contrib-neon.svg?flavor=latte
             dist/contrib-neon-dark.svg?flavor=mocha
+
+      - name: Generate stats card SVGs
+        uses: sm-steel/stats-neon@v1
+        with:
+          github_user_name: sm-steel
+          # a personal token so private repos count too (the workflow token sees public only)
+          github_token: ${{ secrets.METRICS_TOKEN }}
+          outputs: |
+            dist/stats.svg?flavor=latte
+            dist/stats-dark.svg?flavor=mocha
 
       - name: Push output to the "output" branch
         uses: crazy-max/ghaction-github-pages@v5
