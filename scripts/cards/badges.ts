@@ -1,8 +1,9 @@
 // Link badges as small neon cards: three equal badges that fill one 900px row in the
 // README (each its own image, so each stays its own link).
 import {
+	CARD,
 	CURSOR_CSS,
-	card,
+	cardGrid,
 	cursorRect,
 	esc,
 	FLAVORS,
@@ -50,10 +51,13 @@ export const BADGES: Badge[] = [
 ];
 
 /**
- * 3 × (258 + 2×16 padding) + 2 × 15 gap = 900. `cursor` is the blinking block's
- * width; it sits 2px after the text.
+ * Each badge image is a 300px `slot`, so 3 slots tile the README's 900px row exactly
+ * (no page whitespace between them). The 290px frame (258 content + 2×16 padding) sits
+ * flush left / centred / flush right in its slot, leaving 15px `gap`s between badges.
+ * `cursor` is the blinking block's width; it sits 2px after the text.
  */
 export const BADGE = {
+	slot: 300,
 	width: 258,
 	height: 14,
 	gap: 15,
@@ -68,26 +72,35 @@ export const badgeText = (b: Badge) =>
 export const badgeTextWidth = (b: Badge) =>
 	[...badgeText(b)].length * (BADGE.fontSize * 0.62 + 1.2);
 
-export function badgeSvg(b: Badge, theme: Theme): string {
+/** `index` (0-2) is the badge's position in the row. */
+export function badgeSvg(b: Badge, theme: Theme, index = 0): string {
 	const base = theme === "light" ? FLAVORS.latte : FLAVORS.mocha;
 	const color = b.color(base, theme);
 	const p = { ...base, accent: color }; // brackets take the badge's colour
 	const cx = r3((BADGE.width - BADGE.cursor) / 2);
-	return card(
-		{
-			width: BADGE.width,
-			height: BADGE.height,
-			palette: p,
-			seed: `badge:${b.name}`,
-			label: `${b.label}: ${b.value}`,
-			font: { variant: "hud" },
-			beam: false,
-		},
+	const frame = BADGE.width + 2 * CARD.pad;
+	const options = {
+		width: BADGE.width,
+		height: BADGE.height,
+		palette: p,
+		seed: `badge:${b.name}`,
+		label: `${b.label}: ${b.value}`,
+		beam: false,
+	};
+	const content =
 		// text + cursor are centred together, so the text shifts left by half the cursor
 		`<style>${CURSOR_CSS}</style>` +
 			`<text x="${cx}" y="11" text-anchor="middle" font-family="${FONT_STACK}" font-size="${BADGE.fontSize}" letter-spacing="1.2" fill="${p.text}">` +
 			`<tspan fill="${color}">//</tspan> ${esc(b.label.toUpperCase())} :: ` +
 			`<tspan fill="${color}">${esc(b.value.toUpperCase())}</tspan></text>` +
-			cursorRect(r3(cx + badgeTextWidth(b) / 2 + 2), 11, p),
+		cursorRect(r3(cx + badgeTextWidth(b) / 2 + 2), 11, p);
+	return cardGrid(
+		{
+			width: BADGE.slot,
+			height: BADGE.height + 2 * CARD.pad,
+			label: options.label,
+			font: { variant: "hud" },
+		},
+		[{ x: (index * (BADGE.slot - frame)) / 2, y: 0, options, content }],
 	);
 }

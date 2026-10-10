@@ -91,9 +91,9 @@ for (const [theme, p] of THEMES) {
 			`footer-${theme}.svg`,
 			await artCard("footer", join(ASSETS, "footer.jpg"), p),
 		],
-		...BADGES.map((b): [string, string] => [
+		...BADGES.map((b, i): [string, string] => [
 			`badge-${b.name}-${theme}.svg`,
-			badgeSvg(b, theme),
+			badgeSvg(b, theme, i),
 		]),
 	];
 	for (const [file, svg] of out) {

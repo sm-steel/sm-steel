@@ -20,11 +20,23 @@ describe("badges", () => {
 		]);
 	});
 
-	it("renders three equal-size badges that fill a 900px row with the gaps", () => {
-		const sizes = BADGES.map((b) => size(badgeSvg(b, "dark")));
+	it("renders three equal 300px slots that tile a 900px row exactly", () => {
+		const sizes = BADGES.map((b, i) => size(badgeSvg(b, "dark", i)));
 		expect(new Set(sizes.map((s) => s?.join("x"))).size).toBe(1);
-		expect(sizes[0]?.[0]).toBe(BADGE.width + 2 * CARD.pad);
-		expect(3 * (BADGE.width + 2 * CARD.pad) + 2 * BADGE.gap).toBe(900);
+		expect(sizes[0]?.[0]).toBe(BADGE.slot);
+		expect(3 * BADGE.slot).toBe(900);
+	});
+
+	it("puts the frame flush with the row's outer edges and 15px gaps between", () => {
+		const frame = BADGE.width + 2 * CARD.pad;
+		const xs = BADGES.map((b, i) =>
+			Number(badgeSvg(b, "dark", i).match(/<svg x="([\d.]+)"/)?.[1]),
+		);
+		const starts = xs.map((x, i) => i * BADGE.slot + x);
+		expect(starts[0]).toBe(0); // left edge flush
+		expect((starts[2] ?? 0) + frame).toBe(900); // right edge flush
+		expect((starts[1] ?? 0) - ((starts[0] ?? 0) + frame)).toBe(BADGE.gap);
+		expect((starts[2] ?? 0) - ((starts[1] ?? 0) + frame)).toBe(BADGE.gap);
 	});
 
 	it("fits every label in the content width at the badge font size", () => {
@@ -52,9 +64,10 @@ describe("badges", () => {
 		if (!github) throw new Error("no badge");
 		const light = badgeSvg(github, "light");
 		expect(light).toContain(FLAVORS.latte.background);
-		expect(light).toContain('class="nk-gk0"');
-		expect(light).not.toContain('class="nk-bm"');
-		const tear = (svg: string) => svg.match(/@keyframes nk-gk0\{[^}]*\}/)?.[0];
+		expect(light).toMatch(/class="nk\d*-gk0"/); // cardGrid namespaces the card
+		expect(light).not.toMatch(/class="nk\d*-bm"/);
+		const tear = (svg: string) =>
+			svg.match(/@keyframes nk\d*-gk0\{[^}]*\}/)?.[0];
 		const tears = BADGES.map((b) => tear(badgeSvg(b, "dark")));
 		expect(new Set(tears).size).toBe(3);
 	});
