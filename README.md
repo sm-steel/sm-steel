@@ -74,9 +74,7 @@
 
 <div align="center">
 
-[![GitHub](https://img.shields.io/badge/GitHub-sm--steel-cba6f7?style=flat-square&labelColor=1e1e2e)](https://github.com/sm-steel)
-[![Blog](https://img.shields.io/badge/Blog-CRON--ically_Unstable-89b4fa?style=flat-square&labelColor=1e1e2e)](https://t.me/cronically_unstable)
-[![Site](https://img.shields.io/badge/Site-smsteel.ru-a6e3a1?style=flat-square&labelColor=1e1e2e)](https://smsteel.ru)
+<a href="https://github.com/sm-steel"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-github-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/badge-github-light.svg" /><img alt="GitHub: sm-steel" src="assets/badge-github-dark.svg" width="32%" /></picture></a> <a href="https://t.me/cronically_unstable"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-blog-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/badge-blog-light.svg" /><img alt="Blog: CRON-ically Unstable" src="assets/badge-blog-dark.svg" width="32%" /></picture></a> <a href="https://smsteel.ru"><picture><source media="(prefers-color-scheme: dark)" srcset="assets/badge-site-dark.svg" /><source media="(prefers-color-scheme: light)" srcset="assets/badge-site-light.svg" /><img alt="Site: smsteel.ru" src="assets/badge-site-dark.svg" width="32%" /></picture></a>
 
 </div>
 

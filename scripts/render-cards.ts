@@ -15,11 +15,12 @@ import {
 	type Palette,
 } from "@sm-steel/neon-kit";
 import sharp from "sharp";
+import { BADGES, badgeSvg, type Theme } from "./cards/badges.ts";
 import { bioCards, stackCards } from "./cards/content.ts";
 import { GRID, layoutCards, type TextCard } from "./cards/layout.ts";
 
 const ASSETS = join(import.meta.dirname, "..", "assets");
-const THEMES: [string, Palette][] = [
+const THEMES: [Theme, Palette][] = [
 	["dark", FLAVORS.mocha],
 	["light", FLAVORS.latte],
 ];
@@ -90,6 +91,10 @@ for (const [theme, p] of THEMES) {
 			`footer-${theme}.svg`,
 			await artCard("footer", join(ASSETS, "footer.jpg"), p),
 		],
+		...BADGES.map((b): [string, string] => [
+			`badge-${b.name}-${theme}.svg`,
+			badgeSvg(b, theme),
+		]),
 	];
 	for (const [file, svg] of out) {
 		await writeFile(join(ASSETS, file), svg);
