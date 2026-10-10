@@ -1,6 +1,12 @@
 import { CARD, FLAVORS, hudCharWidth } from "@sm-steel/neon-kit";
 import { describe, expect, it } from "vitest";
-import { BADGE, BADGES, badgeSvg, badgeText } from "../cards/badges.ts";
+import {
+	BADGE,
+	BADGES,
+	badgeSvg,
+	badgeText,
+	badgeTextWidth,
+} from "../cards/badges.ts";
 
 const size = (svg: string) =>
 	svg.match(/width="([\d.]+)" height="([\d.]+)"/)?.slice(1).map(Number);
@@ -41,12 +47,26 @@ describe("badges", () => {
 		expect(svg).toMatch(new RegExp(`<path d="[^"]+" fill="none" stroke="${blue}"`));
 	});
 
-	it("switches to Latte for light and skips glitch and beam", () => {
+	it("switches to Latte for light, glitches (staggered) but has no beam", () => {
 		const github = BADGES[0];
 		if (!github) throw new Error("no badge");
 		const light = badgeSvg(github, "light");
 		expect(light).toContain(FLAVORS.latte.background);
-		expect(light).not.toContain("nk-gk");
+		expect(light).toContain('class="nk-gk0"');
 		expect(light).not.toContain('class="nk-bm"');
+		const tear = (svg: string) => svg.match(/@keyframes nk-gk0\{[^}]*\}/)?.[0];
+		const tears = BADGES.map((b) => tear(badgeSvg(b, "dark")));
+		expect(new Set(tears).size).toBe(3);
+	});
+
+	it("blinks a cursor right after the value, inside the badge", () => {
+		for (const b of BADGES) {
+			const svg = badgeSvg(b, "dark");
+			expect(svg).toContain(".nk-cur{animation:nk-blink");
+			const x = Number(svg.match(/class="nk-cur" x="([\d.]+)"/)?.[1]);
+			const textRight = BADGE.width / 2 + badgeTextWidth(b) / 2 - BADGE.cursor / 2;
+			expect(x).toBeGreaterThan(textRight);
+			expect(x + BADGE.cursor).toBeLessThanOrEqual(BADGE.width);
+		}
 	});
 });
