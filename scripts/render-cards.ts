@@ -4,10 +4,11 @@
 //
 //   node scripts/render-cards.ts      (or: mise run cards)
 //
-import { writeFile } from "node:fs/promises";
+import { readFile, writeFile } from "node:fs/promises";
 import { join } from "node:path";
 import { card, cardGrid, FLAVORS, type Palette, r3 } from "@sm-steel/neon-kit";
 import sharp from "sharp";
+import { avifSize } from "./cards/avif.ts";
 import { BADGES, badgeSvg, type Theme } from "./cards/badges.ts";
 import { bioCards, stackCards, whoamiCards } from "./cards/content.ts";
 import { GRID, layoutCards, type TextCard } from "./cards/layout.ts";
@@ -64,18 +65,23 @@ async function imageArt(file: string): Promise<Art> {
 	};
 }
 
-/** Artwork scaled to 2× the content width (sharp, JPEG q80) and framed as one card. */
-async function artCard(name: string, file: string, p: Palette): Promise<string> {
+/**
+ * An animated AVIF framed as one card, embedded as is (an SVG shown as <img> can't
+ * load external files). AVIF keeps the soft light gradients clean at a fraction of
+ * an animated WebP's size. footer.avif comes from scripts/footer-video.ts.
+ */
+async function animatedCard(
+	name: string,
+	file: string,
+	p: Palette,
+): Promise<string> {
+	const avif = await readFile(file);
+	const size = avifSize(avif);
 	const width = GRID.width - 32;
-	const meta = await sharp(file).metadata();
-	const height = Math.round((width * (meta.height ?? 1)) / (meta.width ?? 1));
-	const jpeg = await sharp(file)
-		.resize({ width: width * 2 })
-		.jpeg({ quality: 80, mozjpeg: true })
-		.toBuffer();
+	const height = Math.round((width * size.height) / size.width);
 	return card(
 		{ width, height, palette: p, seed: `art:${name}`, label: `${name} artwork` },
-		`<image width="${width}" height="${height}" href="data:image/jpeg;base64,${jpeg.toString("base64")}" preserveAspectRatio="xMidYMid slice"/>`,
+		`<image width="${width}" height="${height}" href="data:image/avif;base64,${avif.toString("base64")}" preserveAspectRatio="xMidYMid slice"/>`,
 	);
 }
 
@@ -90,7 +96,7 @@ for (const [theme, p] of THEMES) {
 		[`stack-${theme}.svg`, textGrid("stack", "Stack", stackCards, p)],
 		[
 			`footer-${theme}.svg`,
-			await artCard("footer", join(ASSETS, "footer.jpg"), p),
+			await animatedCard("footer", join(ASSETS, "footer.avif"), p),
 		],
 		...BADGES.map((b, i): [string, string] => [
 			`badge-${b.name}-${theme}.svg`,

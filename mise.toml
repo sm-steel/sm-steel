@@ -1,5 +1,6 @@
 [tools]
 node = "24.21.0"
+"github:BtbN/FFmpeg-Builds" = "autobuild-2025-08-31-13-00"
 
 [tasks.cards]
 description = "Render the neon profile cards into assets/"
@@ -7,3 +8,7 @@ run = "node scripts/render-cards.ts"
 
 [tasks.test]
 run = "cd scripts && npx vitest run"
+
+[tasks.footer]
+description = "Build assets/footer.avif from the footer video (then run `mise run cards`)"
+run = "node scripts/footer-video.ts"
