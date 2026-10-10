@@ -40,8 +40,6 @@
   <img alt="Stack" src="assets/stack-dark.svg" width="100%" />
 </picture>
 
-<img src="https://capsule-render.vercel.app/api?type=soft&color=0:1e1e2e,100:313244&height=60&section=header" width="100%" />
-
 <div align="center">
 
 <img src="https://raw.githubusercontent.com/sm-steel/sm-steel/output-metrics/metrics.svg" width="100%" alt="GitHub stats" />
